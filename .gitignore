@@ -1,0 +1,10 @@
+/build
+/toolchain
+/crates
+/files
+/profile*
+*.o
+*.a
+*.rlib
+*.ll
+*.s
