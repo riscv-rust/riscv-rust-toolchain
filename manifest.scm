@@ -1,7 +1,7 @@
 (use-package-modules autotools base bash bison bootloaders cmake commencement
                      compression curl documentation elf file flex gawk gcc
-                     libedit libusb multiprecision ncurses pkg-config python
-                     shells ssh swig texinfo tls version-control xml)
+                     libedit libusb multiprecision ninja ncurses pkg-config
+                     python shells ssh swig texinfo tls version-control xml)
 
 (packages->manifest
  (list autoconf
@@ -32,6 +32,7 @@
        libxml2
        mpc
        mpfr
+       ninja
        ncurses
        openssl
        patchelf

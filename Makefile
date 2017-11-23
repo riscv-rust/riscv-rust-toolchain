@@ -14,7 +14,8 @@ llvm_dest  := $(sysroot_dir)
 llvm-configure: $(llvm_src)
 	mkdir -p $(llvm_build)
 	cd $(llvm_build); \
-	cmake $(llvm_src) -DCMAKE_INSTALL_PREFIX=$(llvm_dest) \
+	cmake $(llvm_src) -G "Ninja" \
+										-DCMAKE_INSTALL_PREFIX=$(llvm_dest) \
 	                  -DLLVM_BUILD_LLVM_DYLIB=ON \
 	                  -DLLVM_LINK_LLVM_DYLIB=ON \
 	                  -DLLVM_ENABLE_ASSERTIONS=ON \
