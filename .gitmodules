@@ -1,7 +1,7 @@
 [submodule "llvm"]
 	path = llvm
 	url = https://github.com/dvc94ch/llvm
-	branch = llvm6-riscv-20-11-2017
+	branch = llvm6-riscv-23-11-2017
 [submodule "rust"]
 	path = rust
 	url = https://github.com/dvc94ch/rust
