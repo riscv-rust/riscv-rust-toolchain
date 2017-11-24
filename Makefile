@@ -16,6 +16,10 @@ llvm-configure: $(llvm_src)
 	cd $(llvm_build); \
 	cmake $(llvm_src) -G "Ninja" \
 										-DCMAKE_INSTALL_PREFIX=$(llvm_dest) \
+										-DCMAKE_BUILD_TYPE="Debug" \
+										-DLLVM_USE_SPLIT_DWARF=True \
+										-DLLVM_OPTIMIZED_TABLEGEN=True \
+										-DLLVM_BUILD_TESTS=True \
 	                  -DLLVM_BUILD_LLVM_DYLIB=ON \
 	                  -DLLVM_LINK_LLVM_DYLIB=ON \
 	                  -DLLVM_ENABLE_ASSERTIONS=ON \

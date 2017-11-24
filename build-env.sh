@@ -22,7 +22,7 @@ export PYTHONPATH=$PROFILE/lib/python2.7/site-packages
 export INFOPATH=$PROFILE/share/info
 
 ##
-GCC_LIB=$(dirname $(readlink profile/lib/libgcc_s.so.1))
+GCC_LIB=$(dirname $(dirname $(readlink profile/lib/libgcc_s.so.1)))
 export PATH=$TOOLCHAIN/bin:$PATH
 export LIBRARY_PATH=$TOOLCHAIN/lib:$GCC_LIB/lib:$LIBRARY_PATH
 ## (libgcc_s.so.1) needed to run bootstrap cargo and bootstrap rustc
