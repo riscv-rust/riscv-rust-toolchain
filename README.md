@@ -5,28 +5,30 @@
 ## Getting started
 1. Get the source
 ```sh
-git clone --recursive https://github.com/dvc94ch/riscv-rust
-cd riscv-rust
+git clone --recursive https://github.com/dvc94ch/riscv-rust-toolchain
+cd riscv-rust-toolchain
 ```
 
 2. Install build dependencies
-autoconf automake bash bison cmake coreutils curl
-diffutils doxygen expat file findutils flex-2.6.1
-gawk gcc-toolchain-6 (list gcc-6 "lib") git gmp
-gnu-make grep gzip libedit libssh2 libtool libusb
-libxml2 mpc mpfr ncurses openssl patchelf pkg-config
-python-2 sed swig tar texinfo which zlib zsh
+See [manifest.scm](https://github.com/dvc94ch/riscv-rust-toolchain/manifest.scm)
+for a list of the required build dependencies.
 
 3. Build the toolchain
+A list of all set environment variables is in build-env.sh, adapt
+to your distro if necessary.
+
 ```sh
 # Builds llvm openocd binutils rust and xargo
 make toolchain
 ```
 
-4. Build hello world
+4. Clone quickstart template
+```sh
+git clone https://github.com/dvc94ch/riscv-rust-quickstart
+cd riscv-rust-quickstart
+```
 
-
-5. Upload
+5. Follow instructions in riscv-rust-quickstart README.md
 
 ## RISCV crates
 * [riscv](https://github.com/dvc94ch/riscv) crate provides routines for riscv
