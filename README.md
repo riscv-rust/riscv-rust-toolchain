@@ -10,7 +10,7 @@ cd riscv-rust-toolchain
 ```
 
 2. Install build dependencies
-See [manifest.scm](https://github.com/dvc94ch/riscv-rust-toolchain/manifest.scm)
+See [manifest.scm](https://github.com/dvc94ch/riscv-rust-toolchain/blob/master/manifest.scm)
 for a list of the required build dependencies.
 
 3. Build the toolchain
@@ -28,7 +28,7 @@ git clone https://github.com/dvc94ch/riscv-rust-quickstart
 cd riscv-rust-quickstart
 ```
 
-5. Follow instructions in riscv-rust-quickstart README.md
+5. Follow instructions in riscv-rust-quickstart's [README.md](https://github.com/dvc94ch/riscv-rust-quickstart/blob/master/README.md)
 
 ## RISCV crates
 * [riscv](https://github.com/dvc94ch/riscv) crate provides routines for riscv
