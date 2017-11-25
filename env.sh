@@ -1,6 +1,9 @@
-export TOOLCHAIN=$(realpath ./toolchain)
-export PATH=$TOOLCHAIN/bin:$(realpath ./profile/bin):$PATH
-export RUST_TARGET_PATH=$(realpath .)
-export CARGO_HOME=$(realpath ./build/cargo)
-export XARGO_HOME=$(realpath ./build/xargo)
-export XARGO_RUST_SRC=$(realpath ./rust/src)
+# Copy to project and change RISCV_RUST_TOOLCHAIN path
+export RISCV_RUST_TOOLCHAIN=$PWD
+
+export TOOLCHAIN=$RISCV_RUST_TOOLCHAIN/toolchain
+export PATH=$TOOLCHAIN/bin:$PATH
+export RUST_TARGET_PATH=$RISCV_RUST_TOOLCHAIN
+export CARGO_HOME=$RISCV_RUST_TOOLCHAIN/build/cargo
+export XARGO_HOME=$RISCV_RUST_TOOLCHAIN/build/xargo
+export XARGO_RUST_SRC=$RISCV_RUST_TOOLCHAIN/rust/src
