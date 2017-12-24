@@ -1,6 +1,7 @@
 root_dir           := $(CURDIR)
 build_dir          := $(root_dir)/build
 sysroot_dir        := $(root_dir)/toolchain
+target             := riscv32-unknown-elf
 
 
 all: toolchain
@@ -119,12 +120,12 @@ binutils-build: $(binutils_src)
 	rm -rf $(binutils_build)
 	mkdir -p $(binutils_build)
 	cd $(binutils_build) && $</configure \
-		--target=riscv32-unknown-elf \
+		--target=$(target) \
 		--prefix=$(binutils_dest) \
 		--disable-werror \
 		--enable-debug \
 		--without-guile
 	$(MAKE) -C $(binutils_build)
 	$(MAKE) -C $(binutils_build) install
-$(binutils_dest)/bin/riscv32-unknown-elf-gdb: binutils-build
-binutils: $(binutils_dest)/bin/riscv32-unknown-elf-gdb
+$(binutils_dest)/bin/$(target)-gdb: binutils-build
+binutils: $(binutils_dest)/bin/$(target)-gdb
