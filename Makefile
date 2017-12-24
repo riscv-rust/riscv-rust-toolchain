@@ -116,7 +116,8 @@ binutils-build: $(binutils_src)
 		--target=riscv32-unknown-elf \
 		--prefix=$(binutils_dest) \
 		--disable-werror \
-		--enable-debug
+		--enable-debug \
+		--without-guile
 	$(MAKE) -C $(binutils_build)
 	$(MAKE) -C $(binutils_build) install
 $(binutils_dest)/bin/riscv32-unknown-elf-gdb: binutils-build
