@@ -2,6 +2,12 @@ root_dir           := $(CURDIR)
 build_dir          := $(root_dir)/build
 sysroot_dir        := $(root_dir)/toolchain
 
+
+all: toolchain
+
+clean:
+	git clean -qdfx
+
 toolchain: llvm openocd binutils rust xargo
 	@echo All Tools Installed
 
