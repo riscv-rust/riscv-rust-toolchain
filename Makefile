@@ -105,7 +105,8 @@ openocd-build: $(openocd_src)
 	cd $(openocd_build) && $</configure \
     --prefix=$(openocd_dest) \
     --disable-werror \
-		--enable-remote-bitbang
+		--enable-remote-bitbang \
+    --enable-ftdi
 	$(MAKE) -C $(openocd_build)
 	$(MAKE) -C $(openocd_build) install
 $(openocd_dest)/bin/openocd: openocd-build
