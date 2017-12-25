@@ -3,6 +3,7 @@ build_dir          := $(root_dir)/build
 sysroot_dir        := $(root_dir)/toolchain
 target             := riscv32-unknown-elf
 nproc              :=
+ccache             := $(shell which ccache)
 
 
 all: toolchain
@@ -23,6 +24,8 @@ llvm-configure: $(llvm_src)
 	mkdir -p $(llvm_build)
 	cd $(llvm_build); \
 	cmake $(llvm_src) -G "Ninja" \
+		$(if $(ccache),-DCMAKE_C_COMPILER_LAUNCHER="$(ccache)") \
+		$(if $(ccache),-DCMAKE_CXX_COMPILER_LAUNCHER="$(ccache)") \
 										-DCMAKE_INSTALL_PREFIX=$(llvm_dest) \
 										-DCMAKE_BUILD_TYPE="Debug" \
 										-DLLVM_USE_SPLIT_DWARF=True \
@@ -77,7 +80,8 @@ rust-build: $(sysroot_dir)/bin/cc
               --infodir=$(rust_dest)/share/info \
               --default-linker=gcc \
               --llvm-root=$(llvm_dest) \
-              --enable-llvm-link-shared
+              --enable-llvm-link-shared \
+		--enable-ccache
 	cd $(rust_src) && make
 	cd $(rust_src) && make install
 $(rust_dest)/bin/rustc: rust-build
@@ -107,7 +111,9 @@ openocd-build: $(openocd_src)
     --prefix=$(openocd_dest) \
     --disable-werror \
 		--enable-remote-bitbang \
-    --enable-ftdi
+    --enable-ftdi \
+		$(if $(ccache),CC="$(ccache) $(CC)") \
+		$(if $(ccache),CXX="$(ccache) $(CXX)")
 	$(MAKE) -C $(openocd_build)
 	$(MAKE) -C $(openocd_build) install
 $(openocd_dest)/bin/openocd: openocd-build
@@ -127,7 +133,9 @@ binutils-build: $(binutils_src)
 		--disable-werror \
 		--enable-debug \
 		--without-guile \
-		--enable-python
+		--enable-python \
+		$(if $(ccache),CC="$(ccache) $(CC)") \
+		$(if $(ccache),CXX="$(ccache) $(CXX)")
 	$(MAKE) -C $(binutils_build)
 	$(MAKE) -C $(binutils_build) install
 $(binutils_dest)/bin/$(target)-gdb: binutils-build
