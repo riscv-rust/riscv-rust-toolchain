@@ -125,7 +125,8 @@ binutils-build: $(binutils_src)
 		--prefix=$(binutils_dest) \
 		--disable-werror \
 		--enable-debug \
-		--without-guile
+		--without-guile \
+		--enable-python
 	$(MAKE) -C $(binutils_build)
 	$(MAKE) -C $(binutils_build) install
 $(binutils_dest)/bin/$(target)-gdb: binutils-build
