@@ -3,6 +3,7 @@ build_dir          := $(root_dir)/build
 sysroot_dir        := $(root_dir)/toolchain
 target             := riscv32-unknown-elf
 nproc              :=
+makeflags          := $(if $(nproc),-j$(nproc))
 ccache             := $(shell which ccache)
 
 
@@ -40,7 +41,7 @@ llvm-configure: $(llvm_src)
 $(llvm_build): llvm-configure
 
 llvm-build: $(llvm_build)
-	cmake --build $(llvm_build) -- $(if $(nproc),-j$(nproc))
+	cmake --build $(llvm_build) -- $(makeflags)
 $(llvm_build)/bin/llc: llvm-build
 
 llvm-install: $(llvm_build)/bin/llc
@@ -82,7 +83,7 @@ rust-build: $(sysroot_dir)/bin/cc
               --llvm-root=$(llvm_dest) \
               --enable-llvm-link-shared \
 		--enable-ccache
-	cd $(rust_src) && make
+	cd $(rust_src) && make $(makeflags)
 	cd $(rust_src) && make install
 $(rust_dest)/bin/rustc: rust-build
 rust: $(rust_dest)/bin/rustc
@@ -114,7 +115,7 @@ openocd-build: $(openocd_src)
     --enable-ftdi \
 		$(if $(ccache),CC="$(ccache) $(CC)") \
 		$(if $(ccache),CXX="$(ccache) $(CXX)")
-	$(MAKE) -C $(openocd_build)
+	$(MAKE) -C $(openocd_build) $(makeflags)
 	$(MAKE) -C $(openocd_build) install
 $(openocd_dest)/bin/openocd: openocd-build
 openocd: $(openocd_dest)/bin/openocd
@@ -136,7 +137,7 @@ binutils-build: $(binutils_src)
 		--enable-python \
 		$(if $(ccache),CC="$(ccache) $(CC)") \
 		$(if $(ccache),CXX="$(ccache) $(CXX)")
-	$(MAKE) -C $(binutils_build)
+	$(MAKE) -C $(binutils_build) $(makeflags)
 	$(MAKE) -C $(binutils_build) install
 $(binutils_dest)/bin/$(target)-gdb: binutils-build
 binutils: $(binutils_dest)/bin/$(target)-gdb
