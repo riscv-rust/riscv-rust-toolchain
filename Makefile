@@ -3,6 +3,7 @@ build_dir          := $(root_dir)/build
 sysroot_dir        := $(root_dir)/toolchain
 target             := riscv32-unknown-elf
 ccache             := $(shell which ccache)
+nproc              :=
 
 
 all: toolchain
@@ -39,7 +40,7 @@ llvm-configure: $(llvm_src)
 $(llvm_build): llvm-configure
 
 llvm-build: $(llvm_build)
-	cmake --build $(llvm_build)
+	cmake --build $(llvm_build) -- $(if $(nproc),-j$(nproc))
 $(llvm_build)/bin/llc: llvm-build
 
 llvm-install: $(llvm_build)/bin/llc
