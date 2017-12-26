@@ -2,6 +2,7 @@ root_dir           := $(CURDIR)
 build_dir          := $(root_dir)/build
 sysroot_dir        := $(root_dir)/toolchain
 target             := riscv32-unknown-elf
+ccache             := $(shell which ccache)
 nproc              :=
 ccache             := $(shell which ccache)
 
