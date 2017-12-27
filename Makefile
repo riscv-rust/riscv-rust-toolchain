@@ -10,7 +10,7 @@ ccache             := $(shell which ccache)
 all: toolchain
 
 clean:
-	git clean -qdfx
+	$(RM) -r build toolchain
 
 toolchain: llvm openocd binutils rust xargo
 	@echo All Tools Installed
