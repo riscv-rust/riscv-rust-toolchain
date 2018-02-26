@@ -12,5 +12,5 @@
 	branch = riscv-binutils-2.29
 [submodule "openocd"]
 	path = riscv-openocd
-	url = https://github.com/riscv-rust/riscv-openocd
-	branch = riscv
+	url = https://github.com/riscv-rust/openocd
+	branch = gnu-mcu-eclipse-dev
