@@ -97,6 +97,7 @@ openocd-build: $(openocd_src)
 	cd $(openocd_build) && $</configure \
     --prefix=$(openocd_dest) \
     --disable-werror \
+    --enable-riscv \
 		--enable-remote-bitbang \
     --enable-ftdi \
 		$(if $(ccache),CC="$(ccache) $(CC)") \
