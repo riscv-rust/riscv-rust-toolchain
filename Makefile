@@ -70,21 +70,7 @@ $(sysroot_dir)/bin/cc:
 	ln -s $(shell which gcc) $(sysroot_dir)/bin/cc
 
 rust-build: $(sysroot_dir)/bin/cc
-  # --disable-manage-submodules
-	cd $(rust_src) && \
-	./configure --enable-debug \
-              --enable-extended \
-	            --prefix=$(rust_dest) \
-              --sysconfdir=$(rust_dest)/etc \
-              --localstatedir=$(rust_dest)/var/lib \
-              --datadir=$(rust_dest)/share \
-              --infodir=$(rust_dest)/share/info \
-              --default-linker=gcc \
-              --llvm-root=$(llvm_dest) \
-              --enable-llvm-link-shared \
-		--enable-ccache
-	cd $(rust_src) && make $(makeflags)
-	cd $(rust_src) && make install
+	python2 rust/x.py install
 $(rust_dest)/bin/rustc: rust-build
 rust: $(rust_dest)/bin/rustc
 
