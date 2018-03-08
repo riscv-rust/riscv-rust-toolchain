@@ -5,12 +5,12 @@
 ## Getting started
 1. Get the source
 ```sh
-git clone --recursive https://github.com/dvc94ch/riscv-rust-toolchain
+git clone --recursive https://github.com/riscv-rust/riscv-rust-toolchain
 cd riscv-rust-toolchain
 ```
 
 2. Install build dependencies
-See [manifest.scm](https://github.com/dvc94ch/riscv-rust-toolchain/blob/master/manifest.scm)
+See [manifest.scm](https://github.com/riscv-rust/riscv-rust-toolchain/blob/master/manifest.scm)
 for a list of the required build dependencies.
 
 3. Build the toolchain
@@ -24,23 +24,23 @@ make toolchain
 
 4. Clone quickstart template
 ```sh
-git clone https://github.com/dvc94ch/riscv-rust-quickstart
+git clone https://github.com/riscv-rust/riscv-rust-quickstart
 cd riscv-rust-quickstart
 ```
 
-5. Follow instructions in riscv-rust-quickstart's [README.md](https://github.com/dvc94ch/riscv-rust-quickstart/blob/master/README.md)
+5. Follow instructions in riscv-rust-quickstart's [README.md](https://github.com/riscv-rust/riscv-rust-quickstart/blob/master/README.md)
 
 ## RISCV crates
-* [riscv](https://github.com/dvc94ch/riscv) crate provides routines for riscv
+* [riscv](https://github.com/riscv-rust/riscv) crate provides routines for riscv
 specific asm instructions and reading/writing csr's.
 
-* [riscv-rt](https://github.com/dvc94ch/riscv-rt) crate provides startup code,
+* [riscv-rt](https://github.com/riscv-rust/riscv-rt) crate provides startup code,
 linker script and interrupt handling code.
 
-* [e310x](https://github.com/dvc94ch/e310x) crate is a svd2rust generated api
+* [e310x](https://github.com/riscv-rust/e310x) crate is a svd2rust generated api
 to Freedom E310 MCU peripherals.
 
-* [hifive](https://github.com/dvc94ch/hifive) crate is a board support crate for
+* [hifive](https://github.com/riscv-rust/hifive) crate is a board support crate for
 the hifive board.
 
 * [riscv-rtfm](https://github.com/dvc94ch/riscv-rtfm)
