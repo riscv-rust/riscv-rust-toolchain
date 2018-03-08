@@ -43,8 +43,6 @@ to Freedom E310 MCU peripherals.
 * [hifive](https://github.com/riscv-rust/hifive) crate is a board support crate for
 the hifive board.
 
-* [riscv-rtfm](https://github.com/dvc94ch/riscv-rtfm)
-
 ## License
 ISC License
 
