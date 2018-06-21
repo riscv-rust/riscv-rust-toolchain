@@ -1,3 +1,11 @@
+# OBSOLETE
+
+This is no longer the recommended way to get a Rust toolchain for RISCV.
+Instead, you can clone the [riscv-rust/rust](https://github.com/riscv-rust/rust)
+fork of Rust and build it as normal:
+
+    ./x.py build
+
 # Rust Toolchain for RISCV
 ## Supported boards
 * hifive (RV32IMAC)
