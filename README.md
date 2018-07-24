@@ -6,6 +6,12 @@ fork of Rust and build it as normal:
 
     ./x.py build
 
+You can use
+
+    make toolchain
+
+to build binutils and openocd for RISCV.
+
 # Rust Toolchain for RISCV
 ## Supported boards
 * hifive (RV32IMAC)
