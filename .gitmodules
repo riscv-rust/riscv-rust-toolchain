@@ -1,16 +1,8 @@
-[submodule "llvm"]
-	path = llvm
-	url = https://github.com/riscv-rust/llvm
-	branch = rust-llvm-release-6-0-0-riscv
-[submodule "rust"]
-	path = rust
-	url = https://github.com/riscv-rust/rust
-	branch = riscv-rust-master
 [submodule "binutils"]
 	path = riscv-binutils-gdb
-	url = https://github.com/riscv-rust/riscv-binutils-gdb
+	url = https://github.com/riscv/riscv-binutils-gdb
 	branch = riscv-binutils-2.29
 [submodule "openocd"]
 	path = riscv-openocd
-	url = https://github.com/riscv-rust/openocd
-	branch = gnu-mcu-eclipse-dev
+	url = https://github.com/riscv/riscv-openocd
+	branch = riscv

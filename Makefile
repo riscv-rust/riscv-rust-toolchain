@@ -12,49 +12,8 @@ all: toolchain
 clean:
 	$(RM) -r build toolchain
 
-toolchain: llvm openocd binutils rust xargo
+toolchain: openocd binutils
 	@echo All Tools Installed
-
-
-# LLVM
-llvm_src   := $(root_dir)/llvm
-llvm_build := $(build_dir)/llvm
-llvm_dest  := $(sysroot_dir)
-
-llvm-configure: $(llvm_src)
-	mkdir -p $(llvm_build)
-	cd $(llvm_build); \
-	cmake $(llvm_src) -G "Ninja" \
-		$(if $(ccache),-DCMAKE_C_COMPILER_LAUNCHER="$(ccache)") \
-		$(if $(ccache),-DCMAKE_CXX_COMPILER_LAUNCHER="$(ccache)") \
-										-DCMAKE_INSTALL_PREFIX=$(llvm_dest) \
-										-DCMAKE_BUILD_TYPE="Debug" \
-										-DLLVM_USE_SPLIT_DWARF=True \
-										-DLLVM_OPTIMIZED_TABLEGEN=True \
-										-DLLVM_BUILD_TESTS=True \
-	                  -DLLVM_BUILD_LLVM_DYLIB=ON \
-	                  -DLLVM_LINK_LLVM_DYLIB=ON \
-	                  -DLLVM_ENABLE_ASSERTIONS=ON \
-	                  -DLLVM_INSTALL_UTILS=ON \
-	                  -DLLVM_TARGETS_TO_BUILD="X86" \
-                    -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="RISCV"
-$(llvm_build): llvm-configure
-
-llvm-build: $(llvm_build)
-	cmake --build $(llvm_build) -- $(makeflags)
-$(llvm_build)/bin/llc: llvm-build
-
-llvm-install: $(llvm_build)/bin/llc
-	cmake --build $(llvm_build) --target install
-$(llvm_dest)/bin/llc: llvm-install
-
-llvm-check: $(llvm_build)/bin/llc
-	cmake --build $(llvm_build) --target check-all
-
-lld-check: $(llvm_build)/bin/llc
-	cmake --build $(llvm_build) --target check-lld
-
-llvm: $(llvm_dest)/bin/llc
 
 
 # RUST + CARGO
