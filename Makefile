@@ -2,8 +2,8 @@ root_dir           := $(CURDIR)
 build_dir          := $(root_dir)/build
 sysroot_dir        := $(root_dir)/toolchain
 target             := riscv32-unknown-elf
-nproc              :=
-makeflags          := $(if $(nproc),-j$(nproc))
+jobs               :=
+makeflags          := $(if $(jobs),-j$(jobs))
 ccache             := $(shell which ccache)
 
 
